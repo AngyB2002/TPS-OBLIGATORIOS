@@ -1,0 +1,32 @@
+• Responder las preguntas en un TXT y subirlo a GitHub:
+1-¿Cuál es el beneficio de usar un lenguaje con tipos (Typescript)?
+    TypeScript es un lenguaje que añade tipos estáticos a JavaScript, 
+    lo que significa que puedes declarar explícitamente los tipos de datos que una variable o función acepta o devuelve.
+    Esto ofrece varios beneficios:
+        • Detección de errores temprana.
+        • Mejor documentación y comprensión.
+        • Ayuda en el desarrollo.
+        • Refactorización más segura.
+2-¿A qué se le llama variable interna? ¿Por qué internas?
+    Una variable interna es una variable que está definida dentro del alcance de una función o método
+    en lugar de ser una variable de instancia o una variable global.
+    Se les llama "internas" porque solo son accesibles dentro de la función o método en el que se declaran.
+    Una vez que la función o método ha terminado de ejecutarse, estas variables dejan de existir.
+3-Explicar la diferencia entre composición y herencia.
+    • Herencia: es un mecanismo mediante el cual una clase puede heredar propiedades y comportamientos de otra clase.
+        La clase que hereda se llama "subclase" o "clase derivada", y la clase de la que se heredan los elementos 
+        se llama "superclase" o "clase base". La herencia crea una relación de "es un" entre las clases,
+        donde la subclase es un tipo más específico de la superclase.
+    • Composición: es un enfoque en el que un objeto se construye combinando otros objetos más pequeños. 
+        En lugar de heredar directamente de una clase base, una clase utiliza instancias de otras clases para cumplir 
+        sus funcionalidades. Esto crea una relación de "tiene un" entre las clases, donde una clase contiene o utiliza
+        otra clase.
+4-Enumerar las características de una interfaz.
+    • Una interfaz es una especificación que define un contrato para las clases que la implementan.
+    • Puede definir propiedades, métodos y firmas de métodos que las clases implementadoras deben proporcionar.
+    • Las interfaces en TypeScript solo definen la estructura y los nombres de las propiedades y métodos,
+      no su implementación.
+    • Permite la implementación de múltiples comportamientos en clases diferentes.
+    • Ayuda a lograr abstracción y modularidad en el código.
+    • No afecta al JavaScript resultante, ya que es un concepto de TypeScript para el desarrollo y la verificación
+      de tipos.
