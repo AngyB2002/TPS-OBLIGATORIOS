@@ -13,7 +13,7 @@ let item3 = new Item("Papas", 150);
 let item4 = new Item("Chupetin", 20);
 let item5 = new Item("Chicles", 100);
 
-let itemsIniciales: Item[] = [item1, item2, item3, item4, item5];
+let itemsIniciales : Item[] = [item1, item2, item3, item4, item5];
 
 let miKiosco = new Kiosco();
 miKiosco.cargarItems(itemsIniciales);
@@ -22,5 +22,5 @@ miKiosco.venderItem("Gaseosa");
 miKiosco.venderItem("Papas");
 miKiosco.venderItem("Caramelo");
 
-console.log("Items disponibles:", miKiosco.itemsDisponibles);
-console.log("Items vendidos:", miKiosco.itemsVendidos);
+console.log("Items disponibles:", miKiosco.obtenerItemsDisponibles());
+console.log("Items vendidos:", miKiosco.obtenerItemsVendidos());

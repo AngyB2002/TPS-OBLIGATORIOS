@@ -7,8 +7,16 @@
 import { Item } from "./item";
 
 export class Kiosco{
-    itemsDisponibles : Item[] = [];
-    itemsVendidos : Item[] = [];
+    private itemsDisponibles : Item[] = [];
+    private itemsVendidos : Item[] = [];
+
+    public obtenerItemsDisponibles() : Item[]{
+        return this.itemsDisponibles;
+    }
+
+    public obtenerItemsVendidos() : Item[]{
+        return this.itemsVendidos;
+    }
 
     cargarItems (items : Item[]){
         this.itemsDisponibles = items;
