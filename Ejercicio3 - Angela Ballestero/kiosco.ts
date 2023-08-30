@@ -22,22 +22,20 @@ export class Kiosco{
         this.itemsDisponibles = items;
     }
 
-    venderItem (nombreItem : string){
-        let itemIndex = -1;
+    venderItem(nombreItem : string){
+        let itemEnStock = false;
 
         for (let i = 0; i < this.itemsDisponibles.length; i++){
-            if (this.itemsDisponibles[i].nombre === nombreItem){
-                itemIndex = i;
+            if (this.itemsDisponibles[i].getNombre() === nombreItem){
+                itemEnStock = true;
+                let itemVendido = this.itemsDisponibles.splice(i, 1)[0];
+                this.itemsVendidos.push(itemVendido);
+                console.log(`Se vendió ${itemVendido.getNombre()} por $${itemVendido.getCosto()}`);
                 break;
             }
         }
 
-        if (itemIndex !== -1){
-            let itemEnStock = this.itemsDisponibles[itemIndex];
-            this.itemsVendidos.push(itemEnStock);
-            this.itemsDisponibles.splice(itemIndex, 1);
-            console.log(`Se vendió ${itemEnStock.nombre} por $${itemEnStock.costo}`);
-        } else{
+        if (!itemEnStock){
             console.log(`El item ${nombreItem} no está disponible para vender.`);
         }
     }

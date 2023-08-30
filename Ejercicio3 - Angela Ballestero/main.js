@@ -1,4 +1,5 @@
 "use strict";
+// Parte 1 - Diseño de Sistemas
 //• Implementar un sistema de control de stock para un kiosco. Dicho sistema debe tener un listado de los elementos disponibles para vender, y un listado de los elementos vendidos.
 //• Tener en cuenta que cada ítem o elemento tiene un costo asociado.
 //• El sistema debe poder cargar de un arreglo los items a vender.
@@ -17,5 +18,5 @@ miKiosco.cargarItems(itemsIniciales);
 miKiosco.venderItem("Gaseosa");
 miKiosco.venderItem("Papas");
 miKiosco.venderItem("Caramelo");
-console.log("Items disponibles:", miKiosco.itemsDisponibles);
-console.log("Items vendidos:", miKiosco.itemsVendidos);
+console.log("Items disponibles:", miKiosco.obtenerItemsDisponibles());
+console.log("Items vendidos:", miKiosco.obtenerItemsVendidos());

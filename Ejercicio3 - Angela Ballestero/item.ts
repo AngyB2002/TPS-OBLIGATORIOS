@@ -5,8 +5,8 @@
 //• El sistema debe poder imprimir en consola los ítems vendidos.
 
 export class Item{
-    nombre : string;
-    costo : number;
+    private nombre : string;
+    private costo : number;
 
     constructor(nombre : string, costo : number){
         this.nombre = nombre;
