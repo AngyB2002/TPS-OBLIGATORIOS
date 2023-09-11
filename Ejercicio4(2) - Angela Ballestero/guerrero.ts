@@ -5,13 +5,13 @@ class Guerrero extends Personaje{
         super(nombre, 150, 30, 3);
     }
 
-    ataqueNormal(objetivo : Personaje) : void{
-        if (this.getEnergía() >= 1){
-            objetivo.recibirAtaque(this.getDaño());
-            this.setEnergía(this.getEnergía() - 1);
-            console.log(`${this.getNombre()} realiza un ataque normal a ${objetivo.getNombre()} por ${this.getDaño()} de daño.`);
+    public ataqueNormal(objetivo : Personaje) : void{
+        if (super.getEnergía() >= 1){
+            super.recibirAtaque(super.getDaño());
+            super.setEnergía(super.getEnergía() - 1);
+            console.log(`${super.getNombre()} realiza un ataque normal a ${objetivo.getNombre()} por ${super.getDaño()} de daño.`);
         }else{
-            console.log(`${this.getNombre()} no tiene suficiente energía para atacar.`);
+            console.log(`${super.getNombre()} no tiene suficiente energía para atacar.`);
         }
     }
 }
