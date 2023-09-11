@@ -4,13 +4,13 @@ class Mago extends Personaje{
     constructor(nombre : string){
         super(nombre, 100, 25, 5);
     }
-    ataqueDistancia(objetivo : Personaje) : void{
-        if (this.getEnergía() >= 1){
-            objetivo.recibirAtaque(this.getDaño());
-            this.setEnergía(this.getEnergía() - 1);
-            console.log(`${this.getNombre()} ataca a distancia a ${objetivo.getNombre()} por ${this.getDaño()} de daño.`);
+    public ataqueDistancia(objetivo : Personaje) : void{
+        if (super.getEnergía() >= 1){
+            super.recibirAtaque(super.getDaño());
+            super.setEnergía(super.getEnergía() - 1);
+            console.log(`${super.getNombre()} ataca a distancia a ${objetivo.getNombre()} por ${super.getDaño()} de daño.`);
         }else{
-            console.log(`${this.getNombre()} no tiene suficiente energía para atacar a distancia.`);
+            console.log(`${super.getNombre()} no tiene suficiente energía para atacar a distancia.`);
         }
     }
 }

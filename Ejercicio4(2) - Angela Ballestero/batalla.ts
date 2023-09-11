@@ -3,7 +3,7 @@ import Guerrero from './guerrero';
 import Mago from './mago';
 
 class Batalla{
-    enfrentamiento(personaje1 : Personaje, personaje2 : Personaje) : void{
+    public enfrentamiento(personaje1 : Personaje, personaje2 : Personaje) : void{
         while (personaje1.getVida() > 0 && personaje2.getVida() > 0 && personaje1.getEnergía() > 0 && personaje2.getEnergía() > 0){
             let turno = Math.random() < 0.5 ? personaje1 : personaje2;
             let otro = turno === personaje1 ? personaje2 : personaje1;
