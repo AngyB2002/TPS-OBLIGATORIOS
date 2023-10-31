@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mi primer proyecto API - Ángela Ballestero</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Empleados de la Empresa</h1>
+    <table id="tabla-empleados">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Área</th>
+                <th>Otros datos</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <button id="agregar-empleado">Presione aquí para agregar un nuevo empleado</button>
+
+    <div id="detalles-empleado" class="oculto">
+        <h2>Detalles del Empleado</h2>
+        <div id="info-empleado">
+            <img id="foto-empleado" src="" alt="Foto del Empleado">
+            <p><strong>Nombre:</strong> <span id="nombre-detalle"></span></p>
+            <p><strong>Apellido:</strong> <span id="apellido-detalle"></span></p>
+            <p><strong>Área:</strong> <span id="area-detalle"></span></p>
+            <p><strong>Domicilio:</strong> <span id="domicilio-detalle"></span></p>
+        </div>
+    </div>
+
+    <form id="formulario-empleado" class="oculto">
+        <label for="nombre-empleado">Nombre:</label>
+        <input type="text" id="nombre-empleado" required>
+
+        <label for="apellido-empleado">Apellido:</label>
+        <input type="text" id="apellido-empleado" required>
+
+        <label for="area-empleado">Área:</label>
+        <input type="text" id="area-empleado" required>
+
+        <label for="domicilio-empleado">Domicilio:</label>
+        <input type="text" id="domicilio-empleado" required>
+
+        <button type="submit">Guardar</button> 
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
