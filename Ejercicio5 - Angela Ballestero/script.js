@@ -1,4 +1,6 @@
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('DOMContentLoaded', () => {
+    const API_URL = 'https://6398b453fe03352a94dbe15d.mockapi.io/api/empleados';
+
     let tabla = document.getElementById('tabla-empleados');
     let cuerpo = tabla.querySelector('tbody');
     let botonAgregar = document.getElementById('agregar-empleado');
@@ -14,65 +16,81 @@ document.addEventListener('DOMContentLoaded', () =>{
         formulario.classList.remove('oculto');
     });
 
-    function limpiarFormulario(){
+    function limpiarFormulario() {
         nombreInput.value = '';
         apellidoInput.value = '';
         areaInput.value = '';
         domicilioInput.value = '';
     }
-    
-    formulario.addEventListener('submit', async (e) =>{
+
+    formulario.addEventListener('submit', (e) => {
         e.preventDefault();
         let nombre = nombreInput.value;
         let apellido = apellidoInput.value;
         let area = areaInput.value;
         let domicilio = domicilioInput.value;
-        await agregarEmpleado(nombre, apellido, area, domicilio);
-        limpiarFormulario();
-        formulario.classList.add('oculto');
-        mostrarEmpleados();
+
+        agregarEmpleado(nombre, apellido, area, domicilio)
+            .then(() => {
+                limpiarFormulario();
+                formulario.classList.add('oculto');
+                mostrarEmpleados();
+            })
+            .catch((error) => {
+                console.error('Error al agregar el empleado:', error);
+            });
     });
 
-    async function agregarEmpleado(nombre, apellido, area, domicilio){
-        try{
-            let data = {
-                nombre: nombre,
-                apellido: apellido,
-                area: area,
-                domicilio: domicilio,
-                foto: `https://picsum.photos/200`,
-                id: Math.floor(Math.random() * 1000)
-            };
+    function agregarEmpleado(nombre, apellido, area, domicilio) {
+        let data = {
+            nombre: nombre,
+            apellido: apellido,
+            area: area,
+            domicilio: domicilio,
+            foto: `https://picsum.photos/200`,
+            id: Math.floor(Math.random() * 1000)
+        };
 
-            let respuesta = await fetch('https://6398b453fe03352a94dbe15d.mockapi.io/api/empleados',{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
+        return fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((respuesta) => {
+                if (respuesta.ok) {
+                    return Promise.resolve();
+                } else {
+                    return Promise.reject(new Error('Error al agregar el empleado: ' + respuesta.statusText));
+                }
+            })
+            .catch((error) => {
+                return Promise.reject(new Error('Error al realizar la solicitud POST: ' + error));
             });
-
-            if (respuesta.ok){
-                mostrarEmpleados();
-            } else{
-                console.error('Error al agregar el empleado:', respuesta.statusText);
-            }
-        } catch (error){
-            console.error('Error al realizar la solicitud POST:', error);
-        }
     }
 
-    async function mostrarEmpleados(){
+    function mostrarEmpleados() {
         cuerpo.innerHTML = '';
-        let respuesta = await fetch('https://6398b453fe03352a94dbe15d.mockapi.io/api/empleados');
-        let datos = await respuesta.json();
-
-        datos.forEach((empleado) =>{
-            agregarFilaATabla(cuerpo, empleado);
-        });
+        fetch(API_URL)
+            .then((respuesta) => {
+                if (respuesta.ok) {
+                    return respuesta.json();
+                } else {
+                    return Promise.reject(new Error('Error al obtener los empleados: ' + respuesta.statusText));
+                }
+            })
+            .then((datos) => {
+                datos.forEach((empleado) => {
+                    agregarFilaATabla(cuerpo, empleado);
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
-    function agregarFilaATabla(tabla, empleado){
+    function agregarFilaATabla(tabla, empleado) {
         let fila = document.createElement('tr');
         fila.innerHTML = `
             <td>${empleado.nombre}</td>
@@ -84,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         tabla.appendChild(fila);
     }
 
-    function mostrarDetallesEmpleado(empleado){
+    function mostrarDetallesEmpleado(empleado) {
         foto.src = empleado.foto;
         document.getElementById('nombre-detalle').textContent = empleado.nombre;
         document.getElementById('apellido-detalle').textContent = empleado.apellido;
